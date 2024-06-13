@@ -31,4 +31,9 @@ class BarGraphData {
     'Harry Potter',
     'Sherlock Holmes',
   ];
+  final Glabel = [
+    'Tỷ lệ chuyển đổi',
+    'Atomic Habits',
+    'aaaaaaaa',
+  ];
 }

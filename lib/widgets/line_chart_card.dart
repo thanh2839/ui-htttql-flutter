@@ -84,6 +84,23 @@ class LineChartCard extends StatelessWidget {
                     ),
                     dotData: FlDotData(show: false),
                     spots: data.spots,
+                  ),
+                  LineChartBarData(
+                    color: selectionColor,
+                    barWidth: 2.5,
+                    belowBarData: BarAreaData(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          selectionColor.withOpacity(0.5),
+                          Colors.orange
+                        ],
+                      ),
+                      show: true,
+                    ),
+                    dotData: FlDotData(show: false),
+                    spots: data.spots,
                   )
                 ],
                 minX: 0,
