@@ -9,7 +9,8 @@ Future<DataDashboard> fetchDashboardData() async {
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    final Map<String, dynamic> data = jsonDecode(response.body);
+    final utf8Data = utf8.decode(response.bodyBytes);
+    final Map<String, dynamic> data = jsonDecode(utf8Data);
     // final Map<String, dynamic> data = jsonDecode(jsonDecode(utf8.decode(response.bodyBytes)));
     // Process the fetched data here
     print(data);
@@ -37,11 +38,22 @@ Future<DataDashboard> fetchDashboardData() async {
     Data_dashboard.gaugeView = (((data['totalTheBookSoldInMonth'] / data['view']) * 100)).round();
     Data_dashboard.newestOrders = data['newestOrders'];
     // Data_dashboard.lineRevenues
-    Data_dashboard.lineRevenues = data['revenues'];
-    print("abdeeeee:  ${Data_dashboard.lineRevenues}");
-    Data_dashboard.lineRevenuesDetail = List<Map<String, dynamic>>.from(data['revenuesDetail']);
 
-     print("abcdde: ${Data_dashboard.newestOrders[2]['bookName']}");
+
+    Data_dashboard.lineRevenues = data['revenues'];
+    Data_dashboard.lineRevenuesDetail = data['revenuesDetail'];
+    // print("aaaa : ${Data_dashboard.lineRevenuesDetail}");
+    // for ( var i = 0 ; i < Data_dashboard.lineRevenuesDetail.length ; i++) {
+    //   print("object");
+    //   // Data_dashboard.spots.add(Data_dashboard.lineRevenuesDetail[i]);
+    //   Data_dashboard.spots[i] = Data_dashboard.lineRevenuesDetail['${5*i}'];
+    //   print(Data_dashboard.spots[i]);
+    // }
+
+    // Data_dashboard.lineRevenuesDetail = List<Map<String, dynamic>>.from(data['revenuesDetail']);
+
+    // print("abdeeeee:  ${Data_dashboard.lineRevenues.runtimeType}");
+     // print("abcdde: ${Data_dashboard.newestOrders[2]['bookName']}");
 
     // print("Gauge revenue: ${Data_dashboard.totalRevenueInMonth}");
     // print("Gauge Transaction: ${Data_dashboard.totalTransactionInMonth}");

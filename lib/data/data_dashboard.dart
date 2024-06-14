@@ -16,4 +16,5 @@ class DataDashboard {
   var newestOrders;
   var lineRevenues ;
   var lineRevenuesDetail;
+  var spots;
 }
