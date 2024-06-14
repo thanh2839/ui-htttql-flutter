@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web_htttql_flutter/util/responsive.dart';
 import 'package:web_htttql_flutter/widgets/activity_chart.dart';
 import 'package:web_htttql_flutter/widgets/activity_details_card.dart';
-import 'package:web_htttql_flutter/widgets/bar_graph_widget.dart';
+import 'package:web_htttql_flutter/widgets/gauge_graph_widget.dart';
 import 'package:web_htttql_flutter/widgets/header_widget.dart';
 import 'package:web_htttql_flutter/widgets/line_chart_card.dart';
 import 'package:web_htttql_flutter/widgets/summary_widget.dart';

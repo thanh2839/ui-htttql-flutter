@@ -47,6 +47,10 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             final url = 'http://localhost:3001/';
             html.window.location.href = url;
           }
+          if (selectedIndex == 2) {
+            final url2 = 'http://localhost:3001/admin/paid';
+                html.window.location.href =url2;
+          }
         },
         child: Row(
           children: [

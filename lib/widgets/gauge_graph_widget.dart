@@ -60,7 +60,9 @@ class BarGraphCard extends StatelessWidget {
                         // ],
                         ranges: <GaugeRange>[
                           GaugeRange(
+
                             startValue: 0,
+                            sizeUnit: GaugeSizeUnit.factor,
                             endValue: 100,
                             gradient: SweepGradient(
                               colors: [
