@@ -8,7 +8,7 @@ DataDashboard? globalDashboardData;
 void main() async {
   globalDashboardData = await  fetchDashboardData();
   print("======================");
-  print(globalDashboardData);
+  // print(globalDashboardData);
   runApp(const MyApp());
 }
 

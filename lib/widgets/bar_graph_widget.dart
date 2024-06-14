@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:web_htttql_flutter/data/bar_graph_data.dart';
-import 'package:web_htttql_flutter/model/graph_model.dart';
+import 'package:web_htttql_flutter/main.dart';
 import 'package:web_htttql_flutter/widgets/custom_card_widget.dart';
 
 class BarGraphCard extends StatelessWidget {
@@ -11,7 +11,7 @@ class BarGraphCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final barGraphData = BarGraphData();
-
+    print("abc: ${barGraphData.data.length}");
     return GridView.builder(
         itemCount: barGraphData.data.length,
         shrinkWrap: true,
@@ -39,11 +39,11 @@ class BarGraphCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 0),
                 Expanded(
                   child: SfRadialGauge(
                     enableLoadingAnimation: true,
-                    animationDuration: 4500,
+                    animationDuration: 2000,
                     axes: <RadialAxis>[
                       RadialAxis(
                         minimum: 0,
@@ -52,7 +52,7 @@ class BarGraphCard extends StatelessWidget {
                         // showLabels: false,
                         pointers: <GaugePointer>[
                           RangePointer(
-                            value: 90,
+                            value: barGraphData.data[index].Mark,
                           ),
                         ],
                         // pointers: <GaugePointer>[
@@ -79,7 +79,7 @@ class BarGraphCard extends StatelessWidget {
                           GaugeAnnotation(
                             widget: Container(
                               child: Text(
-                                '90%',
+                                '${barGraphData.data[index].Mark}%',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -93,12 +93,18 @@ class BarGraphCard extends StatelessWidget {
                         ],
                         showFirstLabel: true,
                         showLastLabel: true,
+                        labelOffset: -25,
                         onLabelCreated: (AxisLabelCreatedArgs args) {
                           // Ẩn tất cả nhãn ngoại trừ nhãn đầu tiên và cuối cùng
                           if (args.text != '0' && args.text != '100') {
                             args.text = '';
+
+                          }
+                          if(args.text == '100'){
+                            args.text = barGraphData.data[index].end.toString();
                           }
                         },
+
                         // ranges: <GaugeRange>[
                         //   GaugeRange(
                         //       startValue: 0,

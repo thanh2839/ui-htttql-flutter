@@ -5,7 +5,7 @@ class OverviewDetails {
   var userCount = globalDashboardData?.userCount;
   var inStock = globalDashboardData?.inStock;
   var boughtCount = globalDashboardData?.boughtCount;
-  var allPaids = globalDashboardData?.allPaid;
+  var revenueGrowthRate = globalDashboardData?.revenueGrowthRate;
   List<OverviewModel> get overviewData {
     return [
       OverviewModel(
@@ -22,8 +22,8 @@ class OverviewDetails {
           title: "Số lượng sách bán được"),
       OverviewModel(
           icon: 'web/assets/icons/trade.png',
-          value: allPaids.toString(),
-          title: "Số lượng giao dịch"),
+          value: revenueGrowthRate.toString(),
+          title: "Tăng trường doanh thu"),
     ];
   }
 }
