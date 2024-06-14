@@ -22,7 +22,7 @@ class OverviewDetails {
           title: "Số lượng sách bán được"),
       OverviewModel(
           icon: 'web/assets/icons/trade.png',
-          value: revenueGrowthRate.toString(),
+          value: "${revenueGrowthRate.round()}%",
           title: "Tăng trường doanh thu"),
     ];
   }

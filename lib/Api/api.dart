@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../data/data_dashboard.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 Future<DataDashboard> fetchDashboardData() async {
   var Data_dashboard = DataDashboard();
@@ -42,14 +43,23 @@ Future<DataDashboard> fetchDashboardData() async {
 
     Data_dashboard.lineRevenues = data['revenues'];
     Data_dashboard.lineRevenuesDetail = data['revenuesDetail'];
-    // print("aaaa : ${Data_dashboard.lineRevenuesDetail}");
-    // for ( var i = 0 ; i < Data_dashboard.lineRevenuesDetail.length ; i++) {
-    //   print("object");
-    //   // Data_dashboard.spots.add(Data_dashboard.lineRevenuesDetail[i]);
-    //   Data_dashboard.spots[i] = Data_dashboard.lineRevenuesDetail['${5*i}'];
-    //   print(Data_dashboard.spots[i]);
-    // }
 
+    Map<int, int> convertedMap = {};
+    data['revenuesDetail'].forEach((key, value) {
+      convertedMap[int.parse(key)] = value;
+    });
+    final spots = <FlSpot>[];
+    for (var i = 0; i < 24; i++) {
+      spots.add(FlSpot(i * 5.0, (convertedMap[(i * 5)] as double)));
+    }
+    // for (var i = 0; i < 24; i++) {
+    //   // var x = i * 5.0;
+    //   // var y = convertedMap[(i*5)]?.toDouble() ?? 0.0 * ( 105.0 / 2000.0);
+    //   spots.add(FlSpot(i * 5.0, ((convertedMap[(i * 5)] as double) * (105.0/ Data_dashboard.lineRevenues['100'])).round() as double));
+    //   // spots.add(FlSpot(x,y));
+    //   print(spots);
+    // }
+    Data_dashboard.lineRevenuesDetail = spots;
     // Data_dashboard.lineRevenuesDetail = List<Map<String, dynamic>>.from(data['revenuesDetail']);
 
     // print("abdeeeee:  ${Data_dashboard.lineRevenues.runtimeType}");
